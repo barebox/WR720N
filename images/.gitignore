@@ -1,0 +1,13 @@
+*.pbl
+*.pblx
+*.pblb
+*.img
+*.imximg
+*.map
+*.src
+*.kwbimg
+*.kwbuartimg
+*.socfpgaimg
+pbl.lds
+barebox.x
+barebox.z

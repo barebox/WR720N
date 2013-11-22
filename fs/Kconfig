@@ -1,0 +1,69 @@
+
+menu "Filesystem support"
+
+config FS
+	bool
+	default y
+	select FILETYPE
+
+config FS_AUTOMOUNT
+	bool
+
+config FS_CRAMFS
+	bool
+	select ZLIB
+	prompt "cramfs support"
+
+source fs/ext4/Kconfig
+
+config FS_RAMFS
+	bool
+	default y
+	prompt "ramfs support"
+
+config FS_DEVFS
+	bool
+	default y
+	prompt "devfs support"
+
+config FS_TFTP
+	bool
+	prompt "tftp support"
+	depends on NET
+
+config FS_OMAP4_USBBOOT
+	bool
+	prompt "Filesystem over usb boot"
+	depends on OMAP4_USBBOOT
+
+config FS_NFS
+	depends on NET
+	bool
+	prompt "nfs support"
+
+source fs/fat/Kconfig
+source fs/ubifs/Kconfig
+
+config FS_BPKFS
+	bool
+	prompt "BPKFS support"
+	help
+	  Simple update file format developed for Somfy, tools and library are
+	  available under LGPLv2 (https://www.gitorious.org/libbpk).
+	  This format in the v1.0 allow you to store 6 types a binary stream for
+	  a unique hardware id:
+	   - bootloader
+	   - bootloader_version
+	   - description.gz
+	   - kernel
+	   - rootfs
+	   - firmware_version
+
+config FS_UIMAGEFS
+	bool
+	prompt "uImage FS support"
+
+config PARTITION_NEED_MTD
+	bool
+
+endmenu
